@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="icon" href="https://imgs.search.brave.com/kFlxhm2LjTGiTnVh2fzNSExFylQvzTnkgIjrbI3CD04/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9mL2YzL1Jh/amFsYWtzaG1pX0Vu/Z2luZWVyaW5nX0Nv/bGxlZ2VfJTI4UkVD/JTI5X0NoZW5uYWlf/TG9nby5qcGcvMjUw/cHgtUmFqYWxha3No/bWlfRW5naW5lZXJp/bmdfQ29sbGVnZV8l/MjhSRUMlMjlfQ2hl/bm5haV9Mb2dvLmpw/Zw">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #00ffd1;
+            font-size: 3em;
+            margin-bottom: 0;
+        }
+
+        h5 {
+            color: #ffcc00;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        center {
+            padding: 20px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-spacing: 10px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], select {
+            padding: 10px;
+            width: 250px;
+            border: none;
+            border-radius: 8px;
+            background-color: #1e1e1e;
+            color: white;
+            font-size: 1em;
+        }
+
+        input[type="radio"] {
+            margin-left: 10px;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #00ccff;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #ffcc00;
+        }
+
+        a {
+            color: #00ccff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ffcc00;
+        }
+
+        hr {
+            border: 1px solid #333;
+            margin: 30px 0;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>REC TRAINING ACADEMY 🚀</h1>
+        <h5>Training | Tech News | Freshers Guide</h5>
+        <p>Empowering young developers to level up their skills through training in software development technologies</p>
+    </center>
+
+    <hr>
+
+    <center>
+        <h2 style="color: #00ffd1;">Registration Form 🗒️</h2>
+        <form id="registrationForm">
+            <table>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="age">Age:</label></td>
+                    <td><input type="number" id="age" required></td>
+                </tr> 
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <label><input type="radio" name="gender" value="Male" required> Male♂️</label>
+                        <label><input type="radio" name="gender" value="Female" required> Female♀️</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="course">Select a Course:</label></td>
+                    <td>
+                        <select id="course">
+                            <option value="Full Stack Developer">Full Stack Developer</option>
+                            <option value="Front End">Front End</option>
+                            <option value="Back End">Back End</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="reset" value="Clear"></td>
+                    <td><input type="submit" value="Register"></td>
+                </tr>
+            </table>
+        </form>
+
+        <div class="footer-links">
+            <hr>
+            <p>
+                <a href="index.html">Home</a> | 
+                <a href="https://www.instagram.com/rec_chennai?igsh=MXh4OXpxNm5jOHltag==" target="_blank">Instagram</a> | 
+                <a href="https://youtube.com/@myrecchennai?si=rCFq7eEP0PC5XLLh" target="_blank">YouTube</a> |
+                <a href="my-registrations.html">My Registration</a> 
+
+            </p>
+        </div>
+    </center>
+    <script>
+        // Pre-select course from query string
+        window.addEventListener("DOMContentLoaded", () => {
+          const params = new URLSearchParams(window.location.search);
+          const course = params.get("course");
+          if (course) {
+            document.getElementById("course").value = course;
+          }
+        });
+      </script>
+      
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+    
+            const form = document.getElementById("registrationForm");
+    
+            const formData = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                email: document.getElementById("email").value,
+                course: document.getElementById("course").value
+            };
+    
+            const response = await fetch("http://localhost:5000/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
+    
+            const result = await response.json();
+            alert(result.message);
+    
+            // Clear form after successful submission
+            form.reset();
+        });
+    </script>
+    
+    </script>
+</body>
+</html>
